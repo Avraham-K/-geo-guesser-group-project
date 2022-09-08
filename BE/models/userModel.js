@@ -1,7 +1,9 @@
-const bcrypt = require("bcrypt");
-const { connection } = require("../mysql");
+const dbConnection = require('../Data/knex')
 
-MYSQL = async (sql) => {
+//const bcrypt = require("bcrypt");
+//const { connection } = require("../mysql");
+
+/*MYSQL = async (sql) => {
   const rows = await queryDB(sql);
   const myDB = await Object.values(JSON.parse(JSON.stringify(rows)));
   return myDB;
@@ -67,4 +69,23 @@ module.exports = {
   getAllUsersModel,
   getUserByUserNameModel,
   loginModael,
-};
+};*/
+
+async function createUserModel(user){
+  try{
+    const addUser = await dbConnection.from('users').insert(user)
+    return addUser
+  }catch(err){
+    console.log(err)
+  }
+} 
+async function insertNewPointsModel(idUser, idLevel, points){
+  try{
+    const newPoints = await dbConnection.from('results').insert({id_user:dbConnection.select('id_user').from('users').where({id_user:idUser}),id_level:dbConnection.select('id_level').from('levels').where({id_level:idLevel}),points:points})
+    return newPoints
+  }catch(err){
+    console.log(err)
+  }
+}
+
+module.exports = {createUserModel,insertNewPointsModel}

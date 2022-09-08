@@ -1,4 +1,4 @@
-const { getUserByUserNameModel } = require("../models/usersModel");
+/*const { getUserByUserNameModel } = require("../models/usersModel");
 
 async function userNameExistLogin(req, res, next) {
     const user = await getUserByUserNameModel(req.query.userName);
@@ -8,4 +8,4 @@ async function userNameExistLogin(req, res, next) {
       return;
     }
     res.status(400).send("User name does not match the password");
-  }
+  }*/
