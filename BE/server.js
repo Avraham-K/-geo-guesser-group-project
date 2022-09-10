@@ -1,15 +1,17 @@
 const express = require('express')
 const app = express()
-app.use(express.json())
+
 require("dotenv").config();
 const dbConnection = require('./Data/knex')
 
 const PORT = process.env.PORT || 8080;
 const usersRoute = require("./routes/usersRoute");
 const imageRoute = require("./routes/imageRoute");
-
+const  cookieparser = require('cookie-parser');
 const cors = require("cors");
-app.use(cors());
+app.use(cookieparser());
+app.use(express.json())
+app.use(cors({origin:'http://localhost:3000',credentials:true}));
 
 app.use("/users", usersRoute);
 //app.use("/image", imageRoute);

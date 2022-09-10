@@ -1,5 +1,7 @@
 const {createUserModel,insertNewPointsModel} = require('../models/userModel')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken');
+require('dotenv').config()
 /*const {
   getAllUsersModel,
   loginModael,
@@ -55,6 +57,16 @@ async function insertNewPoints(req,res){
     console.log(err)
   }
 }
+async function logInUser(req,res){
+  try{
+      const {user} = req.body
+      const token = jwt.sign({id:user.id_user},process.env.TOKEN_SECRET,{expiresIn:'5h'})
+      res.cookie('Token',token,{maxAge: 2 * (60 * 60 * 24)})
+      res.send({name: user.first_name,token:token,id:user.id_user})
+  }catch(err){
+      res.status(400).send(err.message)
+  }
+  
+}
 
-
-module.exports = {createUser,insertNewPoints}
+module.exports = {createUser,insertNewPoints,logInUser}
