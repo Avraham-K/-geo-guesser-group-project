@@ -46,3 +46,19 @@ li {
   align-items: center;
   justify-content: center;
 }
+
+.add-location-button {
+  color: white;
+  background-color: #119b76;
+  font-size: 18px;
+  border: none;
+  padding: 0.4vh 1vw;
+  border-radius: 15px;
+  width: 12vw;
+  height: 3vw;
+}
+
+.add-location-button:hover {
+  background-color: #07b687;
+  cursor: pointer;
+}
