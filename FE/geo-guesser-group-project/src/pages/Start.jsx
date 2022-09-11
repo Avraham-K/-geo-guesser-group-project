@@ -4,29 +4,29 @@ import { useContext } from "react";
 import { useState } from "react";
 import { Form, Col, Row } from "react-bootstrap";
 import { UsersContext } from "../context/context";
+import { useNavigate } from "react-router-dom";
 
 function Start() {
+  const { userName, setuserName, difficultyLevel, setDifficultyLevel } =
+    useContext(UsersContext);
+  const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
-    const {userName, setuserName, difficultyLevel, setDifficultyLevel} = useContext(UsersContext);
-  
-
-  const handleStart = async (e) => {
-    try {
-      e.preventDefault();
-
-      const res = await axios.post(
-        "http://localhost:8080/users",
-        {userName, difficultyLevel}
-      );
-    } catch (err) {
-      console.log(err);
+  function handleStart(e) {
+    e.preventDefault();
+    if (userName.trim().length > 6) {
+      navigate("/main");
+      setIsVisible(false);
+      setuserName("");
+    } else {
+      setIsVisible(true);
     }
-  };
+  }
 
   const getHighScoreEasy = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/users");
-     console.log("High Score Easy:",res.data);
+      const res = await axios.get("http://localhost:8080/users/highscoreeasy");
+      console.log("High Score Easy:", res.data);
     } catch (err) {
       console.log(err);
     }
@@ -34,8 +34,8 @@ function Start() {
 
   const getHighScoreHard = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/users");
-     console.log("High Score Hard:",res.data);
+      const res = await axios.get("http://localhost:8080/users/highscorehard");
+      console.log("High Score Hard:", res.data);
     } catch (err) {
       console.log(err);
     }
@@ -48,18 +48,24 @@ function Start() {
 
   return (
     <div className="start-page-container">
-      <h1 className="display-1">Geo Guesser</h1>
       <Form>
+        <h1 className="display-1">Geo Guesser</h1>
         <Form.Group as={Col} className="mb-3" controlId="formBasicname">
           <Form.Label>Full Name</Form.Label>
           <Form.Control
             name="name"
             onChange={(e) => {
-                setuserName(e.target.value);
+              setuserName(e.target.value);
             }}
             type="text"
             placeholder="Enter your Name"
           />
+          <small
+            className="nameCharsAlert"
+            style={{ visibility: isVisible ? "visible" : "hidden" }}
+          >
+            Please enter your name (min 6 char).
+          </small>
         </Form.Group>
 
         <Form.Group
@@ -74,7 +80,6 @@ function Start() {
               setDifficultyLevel(e.target.value);
             }}
           >
-            <option>Select Difficulty Level</option>
             <option value="easy">Easy</option>
             <option value="hard">Hard</option>
           </Form.Select>
