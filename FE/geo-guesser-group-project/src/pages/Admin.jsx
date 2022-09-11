@@ -12,7 +12,7 @@ function Admin() {
     <h1>Admin Page</h1>
     <Input placeholder='Basic usage' />
 
-    {/* <FilePicker
+    <FilePicker
     onFileChange={(fileList) => { }}
     placeholder="placeholder"
     clearButtonLabel="label"
@@ -20,7 +20,7 @@ function Admin() {
     accept="application/json"
     hideClearButton={false}
     ref={myRef}
-/> */}
+/>
 
     {/* <FileUpload
             accept={'image/*'}
