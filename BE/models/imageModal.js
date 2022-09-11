@@ -1,28 +1,9 @@
-const { connection } = require("../mysql");
-
-MYSQL = async (sql) => {
-  const rows = await queryDB(sql);
-  const myDB = await Object.values(JSON.parse(JSON.stringify(rows)));
-  return myDB;
-};
-
-function queryDB(sql) {
-  return new Promise((resolve, reject) => {
-    connection.query(sql, (err, result) => {
-      if (err) reject(err);
-      else resolve(result);
-    });
-  });
-}
+const dbConnection = require('../Data/knex')
 
 async function getAllimagesModel() {
     try {
-        const sql = "";
-    
-        // SQL get all images
-    
-        const SQLimages = await MYSQL(sql);
-        return SQLimages;
+        const images = await dbConnection.from('locations')
+        return images;
       } catch (err) {
         console.log(err);
       }
@@ -30,15 +11,7 @@ async function getAllimagesModel() {
 
   async function addImageModel(newImage) {
     try {
-      const sql = ``;
-    // SQL add image
-
-
-      const SQLanswer = await MYSQL(sql);
-
-        // return answer from SQL
-
-      return SQLanswer;
+      const imageAdded = await dbConnection.from('locations').insert(newImage)
     } catch (err) {
       console.log(err);
     }

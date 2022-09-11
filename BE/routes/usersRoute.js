@@ -9,7 +9,7 @@ const {passwordMatch, userAlreadyExist,isAnExistingUser,verifyPassword} = requir
 router.post('/signup',passwordMatch, userAlreadyExist,UsersController.createUser)
 router.post('/login',isAnExistingUser,verifyPassword,UsersController.logInUser)
 router.post('/newpoints',UsersController.insertNewPoints)
-
+router.get('/logout',UsersController.logOut)
 
 
 module.exports = router;
