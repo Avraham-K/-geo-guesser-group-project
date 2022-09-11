@@ -1,4 +1,4 @@
-const {insertNewPointsModel} = require('../models/userModel')
+const {insertNewPointsModel,getHighScoreEasyModel,getHighScoreHardModel} = require('../models/userModel')
 
 async function insertNewPoints(req,res){
   try{
@@ -11,7 +11,26 @@ async function insertNewPoints(req,res){
     console.log(err)
   }
 }
+async function getHighScoreEasy(req,res){
+  try{
+    const highScores = await getHighScoreEasyModel()
+    res.send(highScores)
+  }catch(err){
+    res.status(500).send(err)
+    console.log(err)
+  }
+  
+}
+async function getHighScoreHard(req,res){
+  try{
+    const highScores = await getHighScoreHardModel()
+    res.send(highScores)
+  }catch(err){
+    res.status(500).send(err)
+    console.log(err)
+  }
+  
+}
 
 
-
-module.exports = {insertNewPoints}
+module.exports = {insertNewPoints,getHighScoreEasy,getHighScoreHard}

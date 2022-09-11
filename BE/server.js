@@ -11,7 +11,7 @@ const  cookieparser = require('cookie-parser');
 const cors = require("cors");
 app.use(cookieparser());
 app.use(express.json())
-app.use(cors({origin:'http://localhost:3000',credentials:true}));
+app.use(cors());
 
 app.use("/users", usersRoute);
 //app.use("/image", imageRoute);
