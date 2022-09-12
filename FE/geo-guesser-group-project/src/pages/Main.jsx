@@ -35,7 +35,7 @@ function Main() {
   };
 
   useEffect(() => {
-    getQuestion();
+    // getQuestion();
   }, []);
 
   const handleNextQuestion = (e) => {
@@ -86,7 +86,7 @@ function Main() {
           width="200em"
           alt="Location Image"
         />
-        <h1 className="display-6">What is the Location of the photo?</h1>
+        <h1 className="display-6">Location of the Image?</h1>
       </div>
 
       <div className="bottom-container">
