@@ -27,7 +27,7 @@ function Main() {
 
   const getQuestion = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/users"); //change route
+      const res = await axios.get("http://localhost:8080/admin"); //change route
       console.log("get Question:", res.data);
       setquestion(res.data);
     } catch (err) {
@@ -78,7 +78,8 @@ function Main() {
   }, [counter]);
 
   function handleEndTimer() {
-    console.log("done");
+    setpoints(score);
+    gameOver();
   }
 
   return (
