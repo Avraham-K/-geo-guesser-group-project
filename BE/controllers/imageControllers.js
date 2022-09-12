@@ -13,8 +13,8 @@ async function getAllimages(req, res) {
     try {
       const { imageUrl, location } = req.body;
       newImage = {
-        imageUrl: imageUrl,
-        location: location,
+        image_location: imageUrl,
+        name_location: location,
       };
       const image = await addImageModel(newImage);
         res.send(image);
