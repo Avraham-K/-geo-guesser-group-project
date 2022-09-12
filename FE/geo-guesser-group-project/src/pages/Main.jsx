@@ -7,6 +7,7 @@ function Main() {
     useContext(UsersContext);
   const { question, setquestion } = useState({});
   const [answer, setAnswer] = useState();
+  const [counter, setCounter] = useState(120);
   let score = 0;
   let questionNumber = 0;
 
@@ -14,14 +15,14 @@ function Main() {
     imageUrl:
       "https://res.cloudinary.com/dcvwxiaaz/image/upload/v1662627100/f8x2cax9…",
     correct: 1,
-    location: "tokyo",
-    location1: "tel aviv",
-    location2: "new york",
-    location3: "london",
-    location4: "berlin",
-    location5: "madrid",
-    location6: "rome",
-    location7: "paris",
+    0: "tokyo",
+    1: "tel aviv",
+    2: "new york",
+    3: "london",
+    4: "berlin",
+    5: "madrid",
+    6: "rome",
+    7: "paris",
   };
 
   const getQuestion = async () => {
@@ -54,30 +55,38 @@ function Main() {
   };
 
   const gameOver = async () => {
-      const userInfo = {
-        nameUser: userName,
-        level: difficultyLevel,
-        points: points,
-      };
-      try {
-        const res = await axios.post("http://localhost:8080/users/newpoints", {
-          userInfo,
-        });
-        console.log(res.data);
-        // navigate to start game and show user score
-      } catch (err) {
-        console.log(err);
-      }
+    const userInfo = {
+      nameUser: userName,
+      level: difficultyLevel,
+      points: points,
     };
+    try {
+      const res = await axios.post("http://localhost:8080/users/newpoints", {
+        userInfo,
+      });
+      console.log(res.data);
+      // navigate to start game and show user score
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   console.log("answer:", answer);
+
+  useEffect(() => {
+    counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
+  }, [counter]);
+
+  function handleEndTimer() {
+    console.log("done");
+  }
 
   return (
     <div className="main-page-container">
       <h1 className="display-4">Let's Play</h1>
       <div className="main-page-header">
-        <p>timer</p>
-        <p>Score: {points}</p>
+        {counter !== 0 ? <div className="timer">{counter}</div> : handleEndTimer()}
+        <span className="score">Score: {score}</span>
       </div>
       <div className="image-container">
         <img
@@ -96,56 +105,56 @@ function Main() {
             value="1"
             onClick={(e) => setAnswer(e.target.value)}
           >
-            {data.location}
+            {data[0]}
           </li>
           <li
             className="location-answer"
             value="2"
             onClick={(e) => setAnswer(e.target.value)}
           >
-            {data.location1}
+            {data[1]}
           </li>
           <li
             className="location-answer"
             value="3"
             onClick={(e) => setAnswer(e.target.value)}
           >
-            {data.location2}
+            {data[2]}
           </li>
           <li
             className="location-answer"
             value="4"
             onClick={(e) => setAnswer(e.target.value)}
           >
-            {data.location3}
+            {data[3]}
           </li>
           <li
             className="location-answer"
             value="5"
             onClick={(e) => setAnswer(e.target.value)}
           >
-            {data.location4}
+            {data[4]}
           </li>
           <li
             className="location-answer"
             value="6"
             onClick={(e) => setAnswer(e.target.value)}
           >
-            {data.location5}
+            {data[5]}
           </li>
           <li
             className="location-answer"
             value="7"
             onClick={(e) => setAnswer(e.target.value)}
           >
-            {data.location6}
+            {data[6]}
           </li>
           <li
             className="location-answer"
             value="8"
             onClick={(e) => setAnswer(e.target.value)}
           >
-            {data.location7}
+            {data[7]}
           </li>
         </ul>
         <button
