@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { UsersContext } from "../context/context";
-
+import { Grid, GridItem } from "@chakra-ui/react";
+// import { CounterComponent } from "../components/counter";
 function Main() {
   const { userName, difficultyLevel, points, setpoints } =
     useContext(UsersContext);
@@ -10,6 +11,11 @@ function Main() {
   const [counter, setCounter] = useState(120);
   let score = 0;
   let questionNumber = 0;
+
+  const MainImg = new URL(
+    "../../images/8ec64b64e1d0805b1101f6c70c7f5b31-tel-aviv.jpg",
+    import.meta.url
+  ); //for test
 
   const data = {
     imageUrl:
@@ -71,8 +77,6 @@ function Main() {
     }
   };
 
-  console.log("answer:", answer);
-
   useEffect(() => {
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
   }, [counter]);
@@ -83,80 +87,90 @@ function Main() {
 
   return (
     <div className="main-page-container">
-      <h1 className="display-4">Let's Play</h1>
+      <h1 className="display-4 mt-4">Let's Play</h1>
       <div className="main-page-header">
-        {counter !== 0 ? <div className="timer">{counter}</div> : handleEndTimer()}
+        {counter !== 0 ? (
+          <div className="timer">{counter}</div>
+        ) : (
+          handleEndTimer()
+        )}
+        {/* <CounterComponent /> */}
         <span className="score">Score: {score}</span>
       </div>
       <div className="image-container">
         <img
-          src={data.imageUrl}
-          height="200em"
-          width="200em"
-          alt="Location Image"
+          // src={data.imageUrl}
+          src={MainImg} // for test
+          height="450em"
+          width="600em"
+          alt="LocationImg"
         />
-        <h1 className="display-6">Location of the Image?</h1>
+        <h1 className="display-6 my-4">Location of the Image?</h1>
       </div>
 
       <div className="bottom-container">
-        <ul>
-          <li
+        <Grid templateColumns="repeat(4, 1fr)" gap={5}>
+          <GridItem
+            w="100%"
+            h="8"
             className="location-answer"
             value="1"
             onClick={(e) => setAnswer(e.target.value)}
           >
             {data[0]}
-          </li>
-          <li
+          </GridItem>
+          <GridItem
             className="location-answer"
             value="2"
             onClick={(e) => setAnswer(e.target.value)}
           >
             {data[1]}
-          </li>
-          <li
+          </GridItem>
+          <GridItem
             className="location-answer"
             value="3"
             onClick={(e) => setAnswer(e.target.value)}
           >
             {data[2]}
-          </li>
-          <li
+          </GridItem>
+          <GridItem
             className="location-answer"
             value="4"
             onClick={(e) => setAnswer(e.target.value)}
           >
-            {data[3]}
-          </li>
-          <li
+            {data[3]}{" "}
+          </GridItem>
+          <GridItem
             className="location-answer"
             value="5"
             onClick={(e) => setAnswer(e.target.value)}
           >
             {data[4]}
-          </li>
-          <li
+          </GridItem>
+          <GridItem
             className="location-answer"
             value="6"
             onClick={(e) => setAnswer(e.target.value)}
           >
             {data[5]}
-          </li>
-          <li
+          </GridItem>
+          <GridItem
             className="location-answer"
             value="7"
             onClick={(e) => setAnswer(e.target.value)}
           >
+            {" "}
             {data[6]}
-          </li>
-          <li
+          </GridItem>
+          <GridItem
             className="location-answer"
             value="8"
             onClick={(e) => setAnswer(e.target.value)}
           >
             {data[7]}
-          </li>
-        </ul>
+          </GridItem>
+        </Grid>
+
         <button
           className="next-question-button"
           type="submit"
