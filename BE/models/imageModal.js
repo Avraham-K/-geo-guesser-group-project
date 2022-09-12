@@ -12,6 +12,7 @@ async function getAllimagesModel() {
   async function addImageModel(newImage) {
     try {
       const imageAdded = await dbConnection.from('locations').insert(newImage)
+      return imageAdded
     } catch (err) {
       console.log(err);
     }
