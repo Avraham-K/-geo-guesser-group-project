@@ -1,5 +1,5 @@
-const multer = require("multer");
-const cloudinary = require("cloudinary").v2;
+/*const multer = require("multer");
+/*const cloudinary = require("cloudinary").v2;
 const fs = require("fs");
 
 const upload = multer({ dest: "../images" });
@@ -39,6 +39,6 @@ function uploadToCloudinary(req, res, next) {
     next()
    }
   });
-}
+}*/
 
-module.exports = { upload, imageUrl, uploadToCloudinary };
+//module.exports = { upload, imageUrl, uploadToCloudinary };

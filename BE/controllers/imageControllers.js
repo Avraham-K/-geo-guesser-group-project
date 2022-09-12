@@ -1,4 +1,3 @@
-const { v4: uuidv4 } = require("uuid");
 const { addImageModel, getAllimagesModel, randimizeImageModel } = require("../models/imageModel");
 
 async function getAllimages(req, res) {
@@ -14,16 +13,13 @@ async function getAllimages(req, res) {
     try {
       const { imageUrl, location } = req.body;
       newImage = {
-        id: uuidv4(),
         imageUrl: imageUrl,
         location: location,
       };
       const image = await addImageModel(newImage);
-      if (image) {
         res.send(image);
-        return;
       }
-    } catch (err) {
+    catch (err) {
       res.status(500).send(err);
     }
   }

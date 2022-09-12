@@ -1,30 +1,37 @@
-const {
-  getAllUsersModel,
-  loginModael,
-} = require("../models/usersModel");
+const {insertNewPointsModel,getHighScoreEasyModel,getHighScoreHardModel} = require('../models/userModel')
 
-
-async function getAllUsers(req, res) {
-    try {
-      const allUsers = await getAllUsersModel();
-      res.send(allUsers);
-    } catch (err) {
-      res.status(500).send(err);
-    }
+async function insertNewPoints(req,res){
+  try{
+    const {nameUser,level, points} = req.body
+    const nameUserUpper = nameUser.toUpperCase()
+    const levelUpper = level.toUpperCase()
+    const newPoints = await insertNewPointsModel(nameUserUpper, levelUpper, points)
+    res.send(newPoints)
+  }catch(err){
+    res.status(500).send(err)
+    console.log(err)
   }
-
-  async function login(req, res) {
-    try {
-      const { userName, password } = req.query;
-      const userOrPasswordError = await loginModael(userName, password);
-      if (userOrPasswordError) {
-        res.send(userOrPasswordError);
-        return;
-      }
-      res.status(500).send("User name does not match the password");
-    } catch (err) {
-      res.status(500).send("User name does not match the password");
-    }
+}
+async function getHighScoreEasy(req,res){
+  try{
+    const highScores = await getHighScoreEasyModel()
+    res.send(highScores)
+  }catch(err){
+    res.status(500).send(err)
+    console.log(err)
   }
+  
+}
+async function getHighScoreHard(req,res){
+  try{
+    const highScores = await getHighScoreHardModel()
+    res.send(highScores)
+  }catch(err){
+    res.status(500).send(err)
+    console.log(err)
+  }
+  
+}
 
-module.exports = { getAllUsers, login };
+
+module.exports = {insertNewPoints,getHighScoreEasy,getHighScoreHard}
