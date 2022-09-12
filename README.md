@@ -1,1 +1,1 @@
-# -geo-guesser-group-project
+# geo-guesser-group-project
