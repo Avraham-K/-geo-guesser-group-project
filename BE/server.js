@@ -7,23 +7,20 @@ const dbConnection = require('./Data/knex')
 const PORT = process.env.PORT || 8080;
 const usersRoute = require("./routes/usersRoute");
 const imageRoute = require("./routes/imageRoute");
-const  cookieparser = require('cookie-parser');
+const cookieparser = require('cookie-parser');
 const cors = require("cors");
 app.use(cookieparser());
 app.use(express.json())
 app.use(cors());
 
 app.use("/users", usersRoute);
-//app.use("/image", imageRoute);
+app.use("/admin", imageRoute);
 
-/*app.get("*", (req, res) => {
+app.get("*", (req, res) => {
    res.status(404).send("Page Not Fount");
- });*/
+ });
 
- /*const {connection} = require("./mysql");
- connection.connect(() => {
-   console.log("MySQL connected");
- });*/
+
  
  dbConnection.migrate.latest().then((migration)=>{
   if(migration){
