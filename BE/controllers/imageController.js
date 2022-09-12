@@ -13,11 +13,11 @@ async function getAllimages(req, res) {
     try {
       const { imageUrl, location } = req.body;
       newImage = {
-        image_location: imageUrl,
-        name_location: location,
+        imageUrl: imageUrl,
+        location: location,
       };
       const image = await addImageModel(newImage);
-        res.send(image);
+        res.status(200).send(image);
       }
     catch (err) {
       res.status(500).send(err);
@@ -27,11 +27,8 @@ async function getAllimages(req, res) {
   async function getImage(req, res) {
     try {
         const allImages = await getAllimagesModel()
-        //// randomize
       
         // randimizeImageModel
-
-
 
 
     } catch (err) {

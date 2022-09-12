@@ -6,9 +6,9 @@ import { Grid, GridItem } from "@chakra-ui/react";
 function Main() {
   const { userName, difficultyLevel, points, setpoints } =
     useContext(UsersContext);
+  const [counter, setCounter] = useState(120);
   const { question, setquestion } = useState({});
   const [answer, setAnswer] = useState();
-  const [counter, setCounter] = useState(120);
   let score = 0;
   let questionNumber = 0;
 
@@ -21,19 +21,19 @@ function Main() {
     imageUrl:
       "https://res.cloudinary.com/dcvwxiaaz/image/upload/v1662627100/f8x2cax9…",
     correct: 1,
-    0: "tokyo",
-    1: "tel aviv",
-    2: "new york",
-    3: "london",
-    4: "berlin",
-    5: "madrid",
-    6: "rome",
-    7: "paris",
+    location: "tokyo",
+    location1: "tel aviv",
+    location2: "new york",
+    location3: "london",
+    location4: "berlin",
+    location5: "madrid",
+    location6: "rome",
+    location7: "paris",
   };
 
   const getQuestion = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/users"); //change route
+      const res = await axios.get("http://localhost:8080/admin"); //change route
       console.log("get Question:", res.data);
       setquestion(res.data);
     } catch (err) {
@@ -82,7 +82,8 @@ function Main() {
   }, [counter]);
 
   function handleEndTimer() {
-    console.log("done");
+    setpoints(score);
+    gameOver();
   }
 
   return (

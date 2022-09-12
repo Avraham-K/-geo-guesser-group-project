@@ -1,5 +1,5 @@
-/*const multer = require("multer");
-/*const cloudinary = require("cloudinary").v2;
+const multer = require("multer");
+const cloudinary = require("cloudinary").v2;
 const fs = require("fs");
 
 const upload = multer({ dest: "../images" });
@@ -7,7 +7,7 @@ const upload = multer({ dest: "../images" });
 const imageUrl = (req, res, next) => {
   try {
     console.log(req.file);
-    const imageUrl = "http://localhost:8081/" + req.file.path;
+    const imageUrl = "http://localhost:8080/" + req.file.path;
     req.body.imageUrl = imageUrl;
     next();
   } catch (err) {
@@ -16,11 +16,10 @@ const imageUrl = (req, res, next) => {
 };
 
 cloudinary.config({
-  cloud_name: "",
-  api_key: "",
-  api_secret: "",
+  cloud_name: "dcvwxiaaz",
+  api_key: "379456423126525",
+  api_secret: "RWfuO8CxLVnZx7PANSXu-LHPySk",
 });
-// add cloudinary API key
 
 
 function uploadToCloudinary(req, res, next) {
@@ -28,7 +27,7 @@ function uploadToCloudinary(req, res, next) {
     res.status(400).send("No image attached");
     return;
   }
-  cloudinary.uploader.upload(req.file.path, (err, result) => {
+  cloudinary.uploader.upload(req.file.path, {folder: 'geogusser'}, (err, result) => {
    if(err) {
     res.status(500).send(err.message);
     return
@@ -39,6 +38,6 @@ function uploadToCloudinary(req, res, next) {
     next()
    }
   });
-}*/
+}
 
-//module.exports = { upload, imageUrl, uploadToCloudinary };
+module.exports = { upload, imageUrl, uploadToCloudinary };
