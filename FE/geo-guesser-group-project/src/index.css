@@ -70,6 +70,7 @@ li {
   /* align-items: center; */
   justify-content: center;
   margin: 40px;
+  width: 40vw;
 }
 
 .start-button {
@@ -104,6 +105,12 @@ li {
   margin-left: 12vw;
 }
 
+.timer, .score{
+  font-size: 70px;
+  color: rgb(251, 85, 85);
+  margin-right: 8vw;
+}
+
 .image-container {
   display: flex;
   flex-direction: column;
@@ -115,7 +122,7 @@ li {
   font-size: 20px;
   transition-duration: 0.1s;
   margin: 0.5vh 0;
-  color: blue;
+  color: rgb(92, 92, 92);
 }
 
 .location-answer:hover {
