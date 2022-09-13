@@ -12,7 +12,7 @@ const knexConfig = {
   },
   pool: {
     min: 2,
-    max: 10,
+    max: 80,
   },
   migrations: {
     tableName: 'knex-migrations',

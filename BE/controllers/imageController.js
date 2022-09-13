@@ -1,4 +1,4 @@
-const { addImageModel, getAllimagesModel, randimizeImageModel } = require("../models/imageModel");
+const { addImageModel, getAllimagesModel, randimizeImageModel } = require("../models/imageModal");
 
 async function getAllimages(req, res) {
     try {
@@ -13,22 +13,26 @@ async function getAllimages(req, res) {
     try {
       const { imageUrl, location } = req.body;
       newImage = {
-        imageUrl: imageUrl,
-        location: location,
+        image_location: imageUrl,
+        name_location: location,
       };
       const image = await addImageModel(newImage);
-        res.status(200).send(image);
+        res.send(image);
       }
     catch (err) {
       res.status(500).send(err);
+      console.log(err);
     }
   }
 
   async function getImage(req, res) {
     try {
         const allImages = await getAllimagesModel()
+        //// randomize
       
         // randimizeImageModel
+
+
 
 
     } catch (err) {
