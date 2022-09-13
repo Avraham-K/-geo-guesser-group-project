@@ -7,15 +7,15 @@ function Main() {
   const { userName, difficultyLevel, points, setpoints } =
     useContext(UsersContext);
   const [counter, setCounter] = useState(120);
-  const { question, setquestion } = useState({});
+  const [ question, setquestion ] = useState({});
   const [answer, setAnswer] = useState();
   let score = 0;
   let questionNumber = 0;
 
-  const MainImg = new URL(
-    "../../images/8ec64b64e1d0805b1101f6c70c7f5b31-tel-aviv.jpg",
-    import.meta.url
-  ); //for test
+  // const MainImg = new URL(
+  //   "../../images/8ec64b64e1d0805b1101f6c70c7f5b31-tel-aviv.jpg",
+  //   import.meta.url
+  // ); //for test
 
   const data = {
     imageUrl:
@@ -35,14 +35,16 @@ function Main() {
     try {
       const res = await axios.get("http://localhost:8080/admin"); //change route
       console.log("get Question:", res.data);
-      setquestion(res.data);
+      if (res.data.id_location) {
+        setquestion(res.data);
+      }
     } catch (err) {
       console.log(err);
     }
   };
 
   useEffect(() => {
-    // getQuestion();
+    getQuestion();
   }, []);
 
   const handleNextQuestion = (e) => {
@@ -101,8 +103,8 @@ function Main() {
       </div>
       <div className="image-container">
         <img
-          // src={data.imageUrl}
-          src={MainImg} // for test
+          src={question.image_location}
+          // src={MainImg} // for test
           height="450em"
           width="600em"
           alt="LocationImg"
