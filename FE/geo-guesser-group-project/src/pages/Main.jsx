@@ -47,6 +47,7 @@ function Main() {
 
   const handleNextQuestion = (e) => {
     e.preventDefault();
+
     if (answer === data.correct) {
       score += score + 10;
     }
