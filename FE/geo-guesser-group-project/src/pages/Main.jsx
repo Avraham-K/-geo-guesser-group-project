@@ -4,7 +4,7 @@ import { UsersContext } from "../context/context";
 import { Grid, GridItem } from "@chakra-ui/react";
 // import { CounterComponent } from "../components/counter";
 function Main() {
-  const { userName, difficultyLevel, points, setpoints } =
+  const { userName, difficultyLevel, c, setpoints } =
     useContext(UsersContext);
   const [counter, setCounter] = useState(120);
   const [ question, setquestion ] = useState({});

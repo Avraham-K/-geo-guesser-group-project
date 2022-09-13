@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from "./pages/Main";
+import End from "./pages/End";
 import Start from "./pages/Start";
 import Admin from "./pages/Admin";
 import NavBar from "./components/navbar";
@@ -31,6 +32,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Start />} />
               <Route path="/main" element={<Main />} />
+              <Route path="/end" element={<End />} />
               <Route path="/admin" element={<Admin />} />
             </Routes>
           </BrowserRouter>
