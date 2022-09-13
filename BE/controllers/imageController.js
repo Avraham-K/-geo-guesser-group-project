@@ -26,10 +26,10 @@ async function getAllimages(req, res) {
 
   async function getImage(req, res) {
     try {
-        const allImages = await getAllimagesModel()
-        res.send(allImages);
-      
-        // randimizeImageModel
+      const allImages = await getAllimagesModel();
+      const obj = randimizeImageModel(allImages);
+      // console.log("test:", obj)
+        res.status(200).send(obj);
 
 
     } catch (err) {
