@@ -53,14 +53,9 @@ function Main() {
       points: points,
     };
     try {
-<<<<<<< HEAD
-      const res = await axios.post("http://localhost:8080/users/newpoints",
-        userInfo
-=======
       const res = await axios.post(
         "http://localhost:8080/users/newpoints",
         userInfo
->>>>>>> 11ae3b1fd5df7e5c3be65aa7a54fd237142fc091
       );
       console.log(res.data);
     } catch (err) {
