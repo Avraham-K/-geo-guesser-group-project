@@ -12,11 +12,10 @@ function Main() {
   const [answer, setAnswer] = useState();
   const [questionNumber, setquestionNumber] = useState(0);
   const navigate = useNavigate();
-  // let score = 0;
 
   const getQuestion = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/admin"); //change route
+      const res = await axios.get("http://localhost:8080/admin");
       console.log("get Question:", res.data);
       if (res.data.correct) {
         setquestion(res.data);
@@ -35,8 +34,6 @@ function Main() {
     setquestionNumber(questionNumber + 1);
     console.log("questionNumber:", questionNumber);
 
-    // console.log("answer:", answer)
-    // console.log("question.correct:", question[question.correct])
     if (answer === question[question.correct]) {
       setpoints(points + 10);
     }
@@ -44,8 +41,6 @@ function Main() {
     if (questionNumber < 11) {
       getQuestion();
     } else {
-      // game over. show score
-      // setpoints(score);
       gameOver();
       navigate("/end");
     }
@@ -58,11 +53,16 @@ function Main() {
       points: points,
     };
     try {
+<<<<<<< HEAD
       const res = await axios.post("http://localhost:8080/users/newpoints",
-        userInfo,
+        userInfo
+=======
+      const res = await axios.post(
+        "http://localhost:8080/users/newpoints",
+        userInfo
+>>>>>>> 11ae3b1fd5df7e5c3be65aa7a54fd237142fc091
       );
       console.log(res.data);
-      // navigate to start game and show user score
     } catch (err) {
       console.log(err);
     }
@@ -73,7 +73,6 @@ function Main() {
   }, [counter]);
 
   function handleEndTimer() {
-    // setpoints(score);
     gameOver();
     navigate("/end");
   }
