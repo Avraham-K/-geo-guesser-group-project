@@ -60,6 +60,7 @@ export default function End() {
         Your difficulty:<b> {difficultyLevel}</b>{" "}
       </div>
 
+<<<<<<< HEAD
       <Button className="play-again-button" variant="danger" onClick={() => handlePlayAgain()}>
           Play Again
         </Button>
@@ -87,6 +88,51 @@ export default function End() {
               ))}
           </tbody>
         </Table>
+=======
+      <p className="mt-3 ms-3"><b>Easy high score</b></p>
+      <Table striped bordered hover className="easy-table mt-1 ms-3">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>High Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {highScoreEasy &&
+            highScoreEasy.length > 0 &&
+            highScoreEasy.map((elem, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{elem.user}</td>
+                <td>{elem.high_score}</td>
+              </tr>
+            ))}
+        </tbody>
+      </Table>
+
+      <p className="mt-3 ms-3"><b>Hard high score</b></p>
+      <Table striped bordered hover className="hard-table mt-1 ms-3">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>High Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {highScoreHard &&
+            highScoreHard.length > 0 &&
+            highScoreHard.map((elem, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{elem.user}</td>
+                <td>{elem.high_score}</td>
+              </tr>
+            ))}
+        </tbody>
+      </Table>
+>>>>>>> 2e5925939fb608ede437d73e1090ee451bc400fa
 
         <h6 className="display-6 mt-4">All Time Greatest - Hard Level</h6>
         <Table striped bordered hover className="hard-table">
