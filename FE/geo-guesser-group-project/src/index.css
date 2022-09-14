@@ -127,10 +127,6 @@ li {
 .bottom-container {
   display: flex;
   flex-direction: column;
-  /* justify-content: right;
-  align-items: center; */
-  /* margin-bottom: 5vh; */
-  /* margin-right: 10vw; */
 }
 
 .next-question-button {
