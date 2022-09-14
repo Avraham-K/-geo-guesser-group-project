@@ -17,7 +17,6 @@ function Start() {
     if (userName.trim().length > 3) {
       navigate("/main");
       setIsVisible(false);
-      console.log("difficultyLevel:", difficultyLevel);
     } else {
       setIsVisible(true);
     }
@@ -62,9 +61,11 @@ function Start() {
             <option value="Hard">Hard</option>
           </Form.Select>
         </Form.Group>
+        <div className="start-button-container">
         <button className="start-button" type="submit" onClick={handleStart}>
           START
         </button>
+        </div>
       </Form>
     </div>
   );

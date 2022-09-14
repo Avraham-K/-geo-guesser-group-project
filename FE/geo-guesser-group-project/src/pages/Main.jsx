@@ -32,7 +32,7 @@ function Main() {
   const handleNextQuestion = (e) => {
     e.preventDefault();
     setquestionNumber(questionNumber + 1);
-    console.log("questionNumber:", questionNumber);
+    // console.log("questionNumber:", questionNumber);
 
     if (answer === question[question.correct]) {
       setpoints(points + 10);
@@ -81,87 +81,110 @@ function Main() {
         ) : (
           handleEndTimer()
         )}
-        <span className="score">Score: {points}</span>
-      </div>
-      <div className="image-container">
         <img
           src={question.image_location}
-          height="600vh"
-          width="600vw"
-          alt="LocationImg"
+          alt="Image Location"
+          className="image"
         />
-        <h1 className="display-6 my-4">Location of the Image?</h1>
+        <span className="score">Score: {points}</span>
       </div>
-
+      <h1 className="display-6 my-4">Location of the Image?</h1>
       <div className="bottom-container">
-        <Grid templateColumns="repeat(4, 1fr)" gap={5}>
-          <GridItem
-            w="100%"
-            h="8"
-            className="location-answer"
-            onClick={(e) => setAnswer(question[0])}
-          >
-            {question[0]}
-          </GridItem>
-          <GridItem
-            className="location-answer"
-            value="2"
-            onClick={(e) => setAnswer(question[1])}
-          >
-            {question[1]}
-          </GridItem>
-          <GridItem
-            className="location-answer"
-            value="3"
-            onClick={(e) => setAnswer(question[2])}
-          >
-            {question[2]}
-          </GridItem>
-          <GridItem
-            className="location-answer"
-            value="4"
-            onClick={(e) => setAnswer(question[3])}
-          >
-            {question[3]}{" "}
-          </GridItem>
-          <GridItem
-            className="location-answer"
-            value="5"
-            onClick={(e) => setAnswer(question[4])}
-          >
-            {question[4]}
-          </GridItem>
-          <GridItem
-            className="location-answer"
-            value="6"
-            onClick={(e) => setAnswer(question[5])}
-          >
-            {question[5]}
-          </GridItem>
-          <GridItem
-            className="location-answer"
-            value="7"
-            onClick={(e) => setAnswer(question[6])}
-          >
-            {" "}
-            {question[6]}
-          </GridItem>
-          <GridItem
-            className="location-answer"
-            value="8"
-            onClick={(e) => setAnswer(question[7])}
-          >
-            {question[7]}
-          </GridItem>
-        </Grid>
+        {difficultyLevel === "Easy" ? (
+          <Grid templateColumns="repeat(4, 1fr)" gap={5}>
+            <GridItem
+              w="100%"
+              h="8"
+              className="location-answer"
+              onClick={(e) => setAnswer(question[0])}
+            >
+              {question[0]}
+            </GridItem>
+            <GridItem
+              className="location-answer"
+              onClick={(e) => setAnswer(question[1])}
+            >
+              {question[1]}
+            </GridItem>
+            <GridItem
+              className="location-answer"
+              onClick={(e) => setAnswer(question[2])}
+            >
+              {question[2]}
+            </GridItem>
+            <GridItem
+              className="location-answer"
+              onClick={(e) => setAnswer(question[3])}
+            >
+              {question[3]}
+            </GridItem>
+          </Grid>
+        ) : null}
 
-        <button
-          className="next-question-button"
-          type="submit"
-          onClick={handleNextQuestion}
-        >
-          Next Question
-        </button>
+        {difficultyLevel === "Hard" ? (
+          <Grid templateColumns="repeat(4, 1fr)" gap={5}>
+            <GridItem
+              w="100%"
+              h="8"
+              className="location-answer"
+              onClick={(e) => setAnswer(question[0])}
+            >
+              {question[0]}
+            </GridItem>
+            <GridItem
+              className="location-answer"
+              onClick={(e) => setAnswer(question[1])}
+            >
+              {question[1]}
+            </GridItem>
+            <GridItem
+              className="location-answer"
+              onClick={(e) => setAnswer(question[2])}
+            >
+              {question[2]}
+            </GridItem>
+            <GridItem
+              className="location-answer"
+              onClick={(e) => setAnswer(question[3])}
+            >
+              {question[3]}{" "}
+            </GridItem>
+            <GridItem
+              className="location-answer"
+              onClick={(e) => setAnswer(question[4])}
+            >
+              {question[4]}
+            </GridItem>
+            <GridItem
+              className="location-answer"
+              onClick={(e) => setAnswer(question[5])}
+            >
+              {question[5]}
+            </GridItem>
+            <GridItem
+              className="location-answer"
+              onClick={(e) => setAnswer(question[6])}
+            >
+              {" "}
+              {question[6]}
+            </GridItem>
+            <GridItem
+              className="location-answer"
+              onClick={(e) => setAnswer(question[7])}
+            >
+              {question[7]}
+            </GridItem>
+          </Grid>
+        ) : null}
+        <div className="next-button-container">
+          <button
+            className="next-question-button"
+            type="submit"
+            onClick={handleNextQuestion}
+          >
+            Next Question
+          </button>
+        </div>
       </div>
     </div>
   );

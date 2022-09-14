@@ -71,6 +71,13 @@ li {
   margin: 40px;
 }
 
+.start-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20vh;
+}
+
 .start-button {
   color: white;
   background-color: red;
@@ -103,11 +110,9 @@ li {
   margin-left: 12vw;
 }
 
-.image-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.image{
+  height: 400px;
+  width: 700px;
 }
 
 .location-answer {
@@ -128,25 +133,38 @@ li {
   flex-direction: column;
 }
 
+.next-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .next-question-button {
   color: white;
   background-color: #119b76;
-  font-size: 18px;
+  font-size: 25px;
   border: none;
   padding: 0.4vh 1vw;
   border-radius: 15px;
-  width: 12vw;
-  height: 3vw;
+  width: 20vw;
+  height: 4vw;
+  margin: 20px;
 }
 
 .next-question-button:hover {
   background-color: #07b687;
   cursor: pointer;
 }
+
 h1 {
   font-family: "Roboto";
   text-align: center;
   margin-bottom: 40px;
+}
+
+.score {
+  font-size: 50px;
+  color: #07b687;
 }
 
 .timer-wrapper {
@@ -159,10 +177,13 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 50px;
+  color: rgb(253, 119, 119);
 }
 
 .text {
   color: #aaa;
+  
 }
 
 .value {
