@@ -13,7 +13,19 @@ function Main() {
   const [questionNumber, setquestionNumber] = useState(0);
   const navigate = useNavigate();
 
-  const getQuestion = async () => {
+  const getQuestionEasy = async () => {
+    try {
+      const res = await axios.get("http://localhost:8080/admin/easy");
+      console.log("get Question:", res.data);
+      if (res.data.correct) {
+        setquestion(res.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getQuestionHard = async () => {
     try {
       const res = await axios.get("http://localhost:8080/admin");
       console.log("get Question:", res.data);
@@ -26,7 +38,11 @@ function Main() {
   };
 
   useEffect(() => {
-    getQuestion();
+    if (difficultyLevel === "Easy") {
+      getQuestionEasy();
+    } else {
+      getQuestionHard();
+    }
   }, []);
 
   const handleNextQuestion = (e) => {
@@ -39,7 +55,11 @@ function Main() {
     }
 
     if (questionNumber < 11) {
-      getQuestion();
+      if (difficultyLevel === "Easy") {
+        getQuestionEasy();
+      } else {
+        getQuestionHard();
+      }
     } else {
       gameOver();
       navigate("/end");
@@ -96,24 +116,28 @@ function Main() {
               w="100%"
               h="8"
               className="location-answer"
+              border={answer === question[0] && "1px solid black"}
               onClick={(e) => setAnswer(question[0])}
             >
               {question[0]}
             </GridItem>
             <GridItem
               className="location-answer"
+              border={answer === question[1] && "1px solid black"}
               onClick={(e) => setAnswer(question[1])}
             >
               {question[1]}
             </GridItem>
             <GridItem
               className="location-answer"
+              border={answer === question[2] && "1px solid black"}
               onClick={(e) => setAnswer(question[2])}
             >
               {question[2]}
             </GridItem>
             <GridItem
               className="location-answer"
+              border={answer === question[3] && "1px solid black"}
               onClick={(e) => setAnswer(question[3])}
             >
               {question[3]}

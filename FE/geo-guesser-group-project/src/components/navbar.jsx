@@ -26,6 +26,12 @@ function NavBar(props) {
               Admin
             </Link>
           </li>
+
+          <li>
+            <Link className="link" to="/end">
+              Rank
+            </Link>
+          </li>
       </ul>
     </nav>
   );

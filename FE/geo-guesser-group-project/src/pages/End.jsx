@@ -49,7 +49,7 @@ export default function End() {
 
   return (
     <div>
-      <div className="mt-1 ms-3">Hi <b> {userName}</b></div>
+      <div className="mt-1 ms-3">Hey {userName} </div>
       <div className="ms-3">Your Score is: <b>{points}</b></div>
       <div className="ms-3">Your difficulty:<b> {difficultyLevel}</b> </div>
 
