@@ -7,7 +7,8 @@ import { UsersContext } from "../context/context";
 import { useNavigate } from "react-router-dom";
 
 export default function End() {
-  const { userName, setuserName, difficultyLevel, points, setpoints } = useContext(UsersContext);
+  const { userName, setuserName, difficultyLevel, points, setpoints } =
+    useContext(UsersContext);
   const navigate = useNavigate();
 
   const [highScoreHard, setHighScoreHard] = useState(null);
@@ -40,13 +41,11 @@ export default function End() {
     getHighScoreHard();
   }, []);
 
-
-function handlePlayAgain(){
-  setpoints(0);
-  setuserName("");
+  function handlePlayAgain() {
+    setpoints(0);
+    setuserName("");
     navigate("/");
-}
-
+  }
 
   return (
     <div>
@@ -68,7 +67,7 @@ function handlePlayAgain(){
             highScoreEasy.length > 0 &&
             highScoreEasy.map((elem, index) => (
               <tr key={index}>
-                <td>{index+1}</td>
+                <td>{index + 1}</td>
                 <td>{elem.user}</td>
                 <td>{elem.high_score}</td>
               </tr>
@@ -90,7 +89,7 @@ function handlePlayAgain(){
             highScoreHard.length > 0 &&
             highScoreHard.map((elem, index) => (
               <tr key={index}>
-                <td>{index+1}</td>
+                <td>{index + 1}</td>
                 <td>{elem.user}</td>
                 <td>{elem.high_score}</td>
               </tr>
@@ -98,8 +97,9 @@ function handlePlayAgain(){
         </tbody>
       </Table>
 
-    <Button variant="danger" onClick={() =>handlePlayAgain()}>Play Again</Button>
-
+      <Button variant="danger" onClick={() => handlePlayAgain()}>
+        Play Again
+      </Button>
     </div>
   );
 }

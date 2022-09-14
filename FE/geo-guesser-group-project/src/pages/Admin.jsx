@@ -5,7 +5,6 @@ import axios from "axios";
 function Admin() {
   const [Image, setImage] = useState();
   const [location, setLocation] = useState();
-  const [answers, setaAswers] = useState({});
   const [isAdmin, setisAdmin] = useState(false);
 
   const handleImage = (e) => {

@@ -23,8 +23,6 @@ function Start() {
     }
   }
 
-  // console.log(difficultyLevel);
-
   return (
     <div className="start-page-container">
       <Form>
@@ -57,7 +55,6 @@ function Start() {
             name="difficultyLevel"
             onChange={(e) => {
               setDifficultyLevel(e.target.value);
-              // console.log(e.target.value);
             }}
           >
             <option>Select Level</option>
