@@ -28,7 +28,6 @@ async function getAllimages(req, res) {
     try {
       const allImages = await getAllimagesModel();
       const obj = randimizeImageModel(allImages);
-      // console.log("test:", obj)
         res.status(200).send(obj);
 
 

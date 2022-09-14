@@ -7,35 +7,17 @@ function Main() {
   const { userName, difficultyLevel, points, setpoints } =
     useContext(UsersContext);
   const [counter, setCounter] = useState(120);
-  const [ question, setquestion ] = useState({});
+  const [question, setquestion] = useState({});
   const [answer, setAnswer] = useState();
+  const [questionNumber, setquestionNumber] = useState(0);
   let score = 0;
-  let questionNumber = 0;
-
-  // const MainImg = new URL(
-  //   "../../images/8ec64b64e1d0805b1101f6c70c7f5b31-tel-aviv.jpg",
-  //   import.meta.url
-  // ); //for test
-
-  const data = {
-    imageUrl:
-      "https://res.cloudinary.com/dcvwxiaaz/image/upload/v1662627100/f8x2cax9…",
-    correct: 1,
-    location: "tokyo",
-    location1: "tel aviv",
-    location2: "new york",
-    location3: "london",
-    location4: "berlin",
-    location5: "madrid",
-    location6: "rome",
-    location7: "paris",
-  };
+  // let questionNumber = 0;
 
   const getQuestion = async () => {
     try {
       const res = await axios.get("http://localhost:8080/admin"); //change route
       console.log("get Question:", res.data);
-      if (res.data.id_location) {
+      if (res.data.correct) {
         setquestion(res.data);
       }
     } catch (err) {
@@ -49,12 +31,17 @@ function Main() {
 
   const handleNextQuestion = (e) => {
     e.preventDefault();
+    console.log("questionNumber:", questionNumber)
+    setquestionNumber(questionNumber +1);
+    console.log("questionNumber:", questionNumber);
 
-    if (answer === data.correct) {
-      score += score + 10;
+    // console.log("answer:", answer)
+    // console.log("question.correct:", question[question.correct])
+    if (answer === question[question.correct]) {
+      setpoints(points + 10);
     }
-    questionNumber += questionNumber + 1;
-    if (questionNumber <= 10) {
+
+    if (questionNumber < 10) {
       getQuestion();
     } else {
       // game over. show score
@@ -99,14 +86,13 @@ function Main() {
           handleEndTimer()
         )}
         {/* <CounterComponent /> */}
-        <span className="score">Score: {score}</span>
+        <span className="score">Score: {points}</span>
       </div>
       <div className="image-container">
         <img
           src={question.image_location}
-          // src={MainImg} // for test
-          height="450em"
-          width="600em"
+          height="600vh"
+          width="600vw"
           alt="LocationImg"
         />
         <h1 className="display-6 my-4">Location of the Image?</h1>
@@ -118,60 +104,59 @@ function Main() {
             w="100%"
             h="8"
             className="location-answer"
-            value="1"
-            onClick={(e) => setAnswer(e.target.value)}
+            onClick={(e) => setAnswer(question[0])}
           >
-            {data[0]}
+            {question[0]}
           </GridItem>
           <GridItem
             className="location-answer"
             value="2"
-            onClick={(e) => setAnswer(e.target.value)}
+            onClick={(e) => setAnswer(question[1])}
           >
-            {data[1]}
+            {question[1]}
           </GridItem>
           <GridItem
             className="location-answer"
             value="3"
-            onClick={(e) => setAnswer(e.target.value)}
+            onClick={(e) => setAnswer(question[2])}
           >
-            {data[2]}
+            {question[2]}
           </GridItem>
           <GridItem
             className="location-answer"
             value="4"
-            onClick={(e) => setAnswer(e.target.value)}
+            onClick={(e) => setAnswer(question[3])}
           >
-            {data[3]}{" "}
+            {question[3]}{" "}
           </GridItem>
           <GridItem
             className="location-answer"
             value="5"
-            onClick={(e) => setAnswer(e.target.value)}
+            onClick={(e) => setAnswer(question[4])}
           >
-            {data[4]}
+            {question[4]}
           </GridItem>
           <GridItem
             className="location-answer"
             value="6"
-            onClick={(e) => setAnswer(e.target.value)}
+            onClick={(e) => setAnswer(question[5])}
           >
-            {data[5]}
+            {question[5]}
           </GridItem>
           <GridItem
             className="location-answer"
             value="7"
-            onClick={(e) => setAnswer(e.target.value)}
+            onClick={(e) => setAnswer(question[6])}
           >
             {" "}
-            {data[6]}
+            {question[6]}
           </GridItem>
           <GridItem
             className="location-answer"
             value="8"
-            onClick={(e) => setAnswer(e.target.value)}
+            onClick={(e) => setAnswer(question[7])}
           >
-            {data[7]}
+            {question[7]}
           </GridItem>
         </Grid>
 

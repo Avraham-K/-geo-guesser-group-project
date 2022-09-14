@@ -10,7 +10,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 function App() {
   const [userName, setuserName] = useState("");
   const [difficultyLevel, setDifficultyLevel] = useState("");
-  const [points, setpoints] = useState();
+  const [points, setpoints] = useState(0);
   const [highScore, setHighScore] = useState("");
 
   return (
