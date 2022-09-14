@@ -1,17 +1,18 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { UsersContext } from "../context/context";
+import { useNavigate } from "react-router-dom";
 import { Grid, GridItem } from "@chakra-ui/react";
-// import { CounterComponent } from "../components/counter";
+
 function Main() {
-  const { userName, difficultyLevel, c, setpoints } =
+  const { userName, difficultyLevel, points, setpoints } =
     useContext(UsersContext);
   const [counter, setCounter] = useState(120);
   const [question, setquestion] = useState({});
   const [answer, setAnswer] = useState();
   const [questionNumber, setquestionNumber] = useState(0);
-  let score = 0;
-  // let questionNumber = 0;
+  const navigate = useNavigate();
+  // let score = 0;
 
   const getQuestion = async () => {
     try {
@@ -31,8 +32,7 @@ function Main() {
 
   const handleNextQuestion = (e) => {
     e.preventDefault();
-    console.log("questionNumber:", questionNumber)
-    setquestionNumber(questionNumber +1);
+    setquestionNumber(questionNumber + 1);
     console.log("questionNumber:", questionNumber);
 
     // console.log("answer:", answer)
@@ -41,12 +41,13 @@ function Main() {
       setpoints(points + 10);
     }
 
-    if (questionNumber < 10) {
+    if (questionNumber < 11) {
       getQuestion();
     } else {
       // game over. show score
-      setpoints(score);
+      // setpoints(score);
       gameOver();
+      navigate("/end");
     }
   };
 
@@ -72,8 +73,9 @@ function Main() {
   }, [counter]);
 
   function handleEndTimer() {
-    setpoints(score);
+    // setpoints(score);
     gameOver();
+    navigate("/end");
   }
 
   return (
@@ -85,7 +87,6 @@ function Main() {
         ) : (
           handleEndTimer()
         )}
-        {/* <CounterComponent /> */}
         <span className="score">Score: {points}</span>
       </div>
       <div className="image-container">

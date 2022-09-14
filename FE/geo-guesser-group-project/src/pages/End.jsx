@@ -7,7 +7,7 @@ import { UsersContext } from "../context/context";
 import { useNavigate } from "react-router-dom";
 
 export default function End() {
-  const { userName, difficultyLevel, points } = useContext(UsersContext);
+  const { userName, setuserName, difficultyLevel, points, setpoints } = useContext(UsersContext);
   const navigate = useNavigate();
 
   const [highScoreHard, setHighScoreHard] = useState(null);
@@ -42,6 +42,8 @@ export default function End() {
 
 
 function handlePlayAgain(){
+  setpoints(0);
+  setuserName("");
     navigate("/");
 }
 
@@ -56,7 +58,7 @@ function handlePlayAgain(){
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>#</th>
+            <th>Rank</th>
             <th>Name</th>
             <th>High Score</th>
           </tr>
@@ -66,7 +68,7 @@ function handlePlayAgain(){
             highScoreEasy.length > 0 &&
             highScoreEasy.map((elem, index) => (
               <tr key={index}>
-                <td>{index}</td>
+                <td>{index+1}</td>
                 <td>{elem.user}</td>
                 <td>{elem.high_score}</td>
               </tr>
@@ -78,7 +80,7 @@ function handlePlayAgain(){
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>#</th>
+            <th>Rank</th>
             <th>Name</th>
             <th>High Score</th>
           </tr>
@@ -88,7 +90,7 @@ function handlePlayAgain(){
             highScoreHard.length > 0 &&
             highScoreHard.map((elem, index) => (
               <tr key={index}>
-                <td>{index}</td>
+                <td>{index+1}</td>
                 <td>{elem.user}</td>
                 <td>{elem.high_score}</td>
               </tr>
