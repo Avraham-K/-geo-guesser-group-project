@@ -12,6 +12,7 @@ body,
   background-color: #ffffff;
 }
 
+
 .navBar {
   min-width: 100vw;
   height: 58px;
@@ -46,6 +47,14 @@ li {
   justify-content: center;
 }
 
+.middle-container {
+  /* width: 30vw; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .add-location-button {
   color: white;
   background-color: #119b76;
@@ -66,9 +75,9 @@ li {
 .start-page-container {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: center;
   margin: 40px;
+  background-image: src="";
 }
 
 .start-button-container {
@@ -115,11 +124,20 @@ li {
   width: 700px;
 }
 
+.answer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 50vw;
+}
+
 .location-answer {
-  font-size: 20px;
+  font-size: 30px;
   transition-duration: 0.1s;
   margin: 0.5vh 0;
   color: blue;
+  display: flex;
 }
 
 .location-answer:hover {
@@ -196,3 +214,38 @@ h1 {
   text-align: center;
   font-size: 16px;
 }
+
+/* End Page */
+.top-container {
+  display: flex;
+}
+
+.game-summary {
+  font-size: 25px;
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.easy-table, .hard-table{
+  width: 50vw;
+  margin-left: 50px;
+}
+
+.play-again-button {
+  color: white;
+  background-color: red;
+  font-size: 30px;
+  border: none;
+  padding: 0.4vh 1vw;
+  border-radius: 15px;
+  width: 20vw;
+  height: 5vw;
+  margin: 20px;
+}
+
+

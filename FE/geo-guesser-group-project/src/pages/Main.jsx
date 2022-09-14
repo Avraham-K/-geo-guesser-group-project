@@ -17,9 +17,9 @@ function Main() {
     try {
       const res = await axios.get("http://localhost:8080/admin/easy");
       console.log("get Question:", res.data);
-      if (res.data.correct) {
+      
         setquestion(res.data);
-      }
+      
     } catch (err) {
       console.log(err);
     }
@@ -29,9 +29,9 @@ function Main() {
     try {
       const res = await axios.get("http://localhost:8080/admin");
       console.log("get Question:", res.data);
-      if (res.data.correct) {
+      
         setquestion(res.data);
-      }
+      
     } catch (err) {
       console.log(err);
     }
@@ -111,10 +111,8 @@ function Main() {
       <h1 className="display-6 my-2">Location of the Image?</h1>
       <div className="bottom-container">
         {difficultyLevel === "Easy" ? (
-          <Grid templateColumns="repeat(4, 1fr)" gap={5}>
+          <Grid templateColumns="repeat(4, 1fr)" gap={5} className="answer-container">
             <GridItem
-              w="100%"
-              h="8"
               className="location-answer"
               border={answer === question[0] && "1px solid black"}
               onClick={(e) => setAnswer(question[0])}
