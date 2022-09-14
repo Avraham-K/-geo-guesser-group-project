@@ -54,7 +54,7 @@ export default function End() {
       <div className="ms-3">Your difficulty:<b> {difficultyLevel}</b> </div>
 
       <p className="mt-3 ms-3"><b>Easy high score</b></p>
-      <Table striped bordered hover className="mt-1 ms-3 w-90">
+      <Table striped bordered hover className="easy-table mt-1 ms-3">
         <thead>
           <tr>
             <th>Rank</th>
@@ -76,7 +76,7 @@ export default function End() {
       </Table>
 
       <p className="mt-3 ms-3"><b>Hard high score</b></p>
-      <Table striped bordered hover className="mt-1 ms-3 w-90">
+      <Table striped bordered hover className="hard-table mt-1 ms-3">
         <thead>
           <tr>
             <th>Rank</th>
