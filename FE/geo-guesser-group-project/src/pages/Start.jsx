@@ -7,7 +7,7 @@ import { UsersContext } from "../context/context";
 import { useNavigate } from "react-router-dom";
 
 function Start() {
-  const { userName, setuserName, difficultyLevel, setDifficultyLevel } =
+  const { userName, setuserName, difficultyLevel, setDifficultyLevel, setpoints } =
     useContext(UsersContext);
   const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
@@ -15,6 +15,7 @@ function Start() {
   function handleStart(e) {
     e.preventDefault();
     if (userName.trim().length > 3) {
+      setpoints(0);
       navigate("/main");
       setIsVisible(false);
     } else {

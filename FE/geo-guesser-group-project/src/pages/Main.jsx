@@ -88,7 +88,7 @@ function Main() {
         />
         <span className="score">Score: {points}</span>
       </div>
-      <h1 className="display-6 my-4">Location of the Image?</h1>
+      <h1 className="display-6 my-2">Location of the Image?</h1>
       <div className="bottom-container">
         {difficultyLevel === "Easy" ? (
           <Grid templateColumns="repeat(4, 1fr)" gap={5}>
@@ -126,6 +126,7 @@ function Main() {
             <GridItem
               w="100%"
               h="8"
+              border={answer === question[0] && "1px solid black"}
               className="location-answer"
               onClick={(e) => setAnswer(question[0])}
             >
@@ -133,36 +134,42 @@ function Main() {
             </GridItem>
             <GridItem
               className="location-answer"
+              border={answer === question[1] && "1px solid black"}
               onClick={(e) => setAnswer(question[1])}
             >
               {question[1]}
             </GridItem>
             <GridItem
               className="location-answer"
+              border={answer === question[2] && "1px solid black"}
               onClick={(e) => setAnswer(question[2])}
             >
               {question[2]}
             </GridItem>
             <GridItem
               className="location-answer"
+              border={answer === question[3] && "1px solid black"}
               onClick={(e) => setAnswer(question[3])}
             >
               {question[3]}{" "}
             </GridItem>
             <GridItem
               className="location-answer"
+              border={answer === question[4] && "1px solid black"}
               onClick={(e) => setAnswer(question[4])}
             >
               {question[4]}
             </GridItem>
             <GridItem
               className="location-answer"
+              border={answer === question[5] && "1px solid black"}
               onClick={(e) => setAnswer(question[5])}
             >
               {question[5]}
             </GridItem>
             <GridItem
               className="location-answer"
+              border={answer === question[6] && "1px solid black"}
               onClick={(e) => setAnswer(question[6])}
             >
               {" "}
@@ -170,6 +177,7 @@ function Main() {
             </GridItem>
             <GridItem
               className="location-answer"
+              border={answer === question[7] && "1px solid black"}
               onClick={(e) => setAnswer(question[7])}
             >
               {question[7]}
