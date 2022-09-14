@@ -49,9 +49,39 @@ async function getAllimagesModel() {
     return obj;
   }
 
+  function randimizeImageModelEasy(allImages) {
+    const totalImages = allImages.length;
+    // console.log("allImages:", allImages)
+    let selectedImages = [];
+    let imageId = [];
+    let i=0;
+    while (i < 4) {
+      let randomImage = Math.floor(Math.random() * totalImages);
+      if (!imageId.includes(randomImage)){
+        imageId.push(randomImage);
+        selectedImages.push(allImages[randomImage]);
+        i++;
+      }
+    }
+    // console.log("selectedImages", selectedImages );
+    let correctAnser = Math.floor(Math.random() * 3);
+    let obj = {};
+    for (let i = 0; i < 4; i++) {
+      if (i===correctAnser){
+        obj.image_location = selectedImages[i].image_location;
+        obj.correct = i;
+      }
+      obj[i] = selectedImages[i].name_location;
+    }
+    // console.log("here2", obj );
+    return obj;
+  }
+
+
   module.exports = {
     getAllimagesModel,
     addImageModel,
-    randimizeImageModel
+    randimizeImageModel,
+    randimizeImageModelEasy
   };
   

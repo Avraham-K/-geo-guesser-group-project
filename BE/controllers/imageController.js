@@ -1,4 +1,4 @@
-const { addImageModel, getAllimagesModel, randimizeImageModel } = require("../models/imageModel");
+const { addImageModel, getAllimagesModel, randimizeImageModel ,randimizeImageModelEasy} = require("../models/imageModel");
 
 async function getAllimages(req, res) {
     try {
@@ -36,9 +36,21 @@ async function getAllimages(req, res) {
     }
   }
 
+  
+  async function getImageEasy(req, res) {
+    try {
+      const allImages = await getAllimagesModel();
+      const obj = randimizeImageModelEasy(allImages);
+        res.status(200).send(obj);
 
 
-  module.exports = { getAllimages, addImage, getImage };
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  }
+
+
+  module.exports = { getAllimages, addImage, getImage, getImageEasy };
 
 
 
