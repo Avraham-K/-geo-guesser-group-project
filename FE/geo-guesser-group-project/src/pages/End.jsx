@@ -50,12 +50,12 @@ function handlePlayAgain(){
 
   return (
     <div>
-      <div>Hi {userName}</div>
-      <div>Your Score: {points}</div>
-      <div>Your difficulty: {difficultyLevel} </div>
+      <div className="mt-1 ms-3">Hi <b> {userName}</b></div>
+      <div className="ms-3">Your Score is: <b>{points}</b></div>
+      <div className="ms-3">Your difficulty:<b> {difficultyLevel}</b> </div>
 
-      <p>Easy high score</p>
-      <Table striped bordered hover>
+      <p className="mt-3 ms-3"><b>Easy high score</b></p>
+      <Table striped bordered hover className="mt-1 ms-3">
         <thead>
           <tr>
             <th>Rank</th>
@@ -76,8 +76,8 @@ function handlePlayAgain(){
         </tbody>
       </Table>
 
-      <p>Hard high score</p>
-      <Table striped bordered hover>
+      <p className="mt-3 ms-3"><b>Hard high score</b></p>
+      <Table striped bordered hover className="mt-1 ms-3">
         <thead>
           <tr>
             <th>Rank</th>

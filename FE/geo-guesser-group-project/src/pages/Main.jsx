@@ -58,9 +58,9 @@ function Main() {
       points: points,
     };
     try {
-      const res = await axios.post("http://localhost:8080/users/newpoints", {
+      const res = await axios.post("http://localhost:8080/users/newpoints",
         userInfo,
-      });
+      );
       console.log(res.data);
       // navigate to start game and show user score
     } catch (err) {
